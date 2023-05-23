@@ -2,7 +2,7 @@ package Pacote3;
 
 import java.util.InputMismatchException;
 
-public class Carro {
+public class Carro implements Acelerador, Autenticavel {
     private String letrasPlaca;
     private int numerosPlaca;
     private int numChassi;
@@ -67,17 +67,26 @@ public class Carro {
         this.motorista = motorista;
     }
 
-    void acelerar() {
+    @Override
+    public int acelerar() {
         this.velocidadeAtual++;
+        return this.velocidadeAtual;
     }
 
-    void acelerar(int limite) {
+    @Override
+    public int acelerar(int limite) {
         for (int i = velocidadeAtual; i < limite; i++) {
             acelerar();
         }
+        return this.velocidadeAtual;
     }
 
     public boolean frear() {
         return false;
+    }
+
+    @Override
+    public String obterCredenciais() {
+        return this.getPlaca();
     }
 }

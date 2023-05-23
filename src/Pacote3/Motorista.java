@@ -1,6 +1,6 @@
 package Pacote3;
 
-public class Motorista extends Pessoa {
+public class Motorista extends Pessoa implements Acelerador, Autenticavel {
     private int matricula;
     private Carro veiculoAtual;
 
@@ -26,7 +26,18 @@ public class Motorista extends Pessoa {
         this.matricula = matricula;
     }
 
-    public void acelerar(int limite) {
-        this.veiculoAtual.acelerar(limite);
+    @Override
+    public int acelerar(int limite) {
+        return this.veiculoAtual.acelerar(limite);
+    }
+
+    @Override
+    public int acelerar() {
+        return this.veiculoAtual.acelerar();
+    }
+
+    @Override
+    public String obterCredenciais() {
+        return this.getCpf();
     }
 }
